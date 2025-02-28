@@ -1,10 +1,10 @@
 import { useQuery } from '@tanstack/react-query';
 import { useCallback, useEffect, useState, useRef } from 'react';
-import { swappiService, getRandomElement } from '../api';
+import { swapiService, getRandomElement } from '../api/swapiService.ts';
 import { Starship } from '../types';
 import { useGame } from './useGame';
 
-export function useStarships(service = swappiService(), getRandom = getRandomElement) {
+export function useStarships(service = swapiService(), getRandom = getRandomElement) {
   const { scores, updateScores } = useGame();
   const [cards, setCards] = useState<{ left: Starship; right: Starship }>();
   const initialMount = useRef(true);

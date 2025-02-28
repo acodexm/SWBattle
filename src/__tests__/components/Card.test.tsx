@@ -15,4 +15,14 @@ describe('Card', () => {
     expect(screen.getByText('Winner!')).toBeDefined();
     expect(screen.getByText('Test Card')).toBeDefined();
   });
+  it('renders without winner state', () => {
+    renderUI(
+      <Card isWinner={false}>
+        <Card.Header icon={<UserIcon />} name="Test Card" />
+      </Card>
+    );
+
+    expect(screen.queryByText('Winner!')).toBeNull();
+    expect(screen.getByText('Test Card')).toBeDefined();
+  });
 });

@@ -11,5 +11,9 @@ describe('useGame', () => {
       result.current.updateScores('left');
     });
     expect(result.current.scores).toEqual({ left: 1, right: 0, winner: 'left' });
+    await act(() => {
+      result.current.updateScores('right');
+    });
+    expect(result.current.scores).toEqual({ left: 1, right: 1, winner: 'right' });
   });
 });

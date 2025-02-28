@@ -1,4 +1,4 @@
-import { Person, ResourceType, Starship } from './types';
+import { Person, ResourceType, Starship } from '../types.ts';
 // this would be set in .env file
 export const BASE_URL = 'https://swapi.dev/api';
 
@@ -38,7 +38,7 @@ export type SwapiService = {
   fetchPeople(): Promise<Person[]>;
   fetchStarships(): Promise<Starship[]>;
 };
-export const swappiService = (client = swapiClient()): SwapiService => {
+export const swapiService = (client = swapiClient()): SwapiService => {
   async function fetchResourceList<T = unknown>(resource: ResourceType) {
     const firstResult = await client.getPage<T>(resource);
     const pages = Math.ceil(firstResult.count / firstResult.results.length);
